@@ -1,6 +1,6 @@
 package Task_1;
 
-public class Cat implements Action{
+public class Cat implements MembersAction {
     private int endurance =0;
     private float riseHeight =0;
 
@@ -27,7 +27,7 @@ public class Cat implements Action{
     @Override
     public String climbOver(float height) {
         endurance -= (height*25);
-        return !canContinue() ? " и решил, что с него хватит.\n" : String.format(" перепрыгнул %.1f метров,",height);
+        return !canContinue() ? " и решил, что с него хватит.\n" : String.format(" перепрыгнул %.1f метра,",height);
     }
 
     @Override

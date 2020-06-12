@@ -4,9 +4,7 @@ import java.util.Random;
 
 public class Main {
 
-     static Human[] humans;
-     static Cat[] cats;
-     static PieceOfIron[] robots;
+     static MembersAction[] members;
      static Random random = new Random();
      static Obstacles[] obstacles;
 
@@ -15,16 +13,23 @@ public class Main {
     }
 
     static void doTask(){
-        int number = 3;
-        getHumans(number);
-        getRobots(number);
-        getCats(number);
+        int number = 9;
+        getMembers(number);
         getObstacles(10);
         System.out.println("Приглашаем всех к полосе препятствий!\n");
         for (int i = 0; i < number; i++) {
-            go(humans[i], i+1);
-            go(cats[i], i+1);
-            go(robots[i], i+1);
+            go(members[i], i+1);
+        }
+    }
+
+    static void getMembers(int number) {
+        members = new MembersAction[number];
+        for (int i = 0; i < number; i++) {
+            members[i] = new Human(random.nextInt(2001)+1000, random.nextFloat()+2.5f);
+            i++;
+            members[i] = new Cat(random.nextInt(1001)+500, (random.nextFloat()/2)+1.5f);
+            i++;
+            members[i] = new PieceOfIron();
         }
     }
 
@@ -36,30 +41,9 @@ public class Main {
 
     }
 
-    static void getHumans(int number) {
-        humans = new Human[number];
-        for (int i = 0; i < humans.length; i++) {
-            humans[i] = new Human(random.nextInt(2001)+1000, random.nextFloat()+2.5f);
-        }
-    }
-
-    static void getCats(int number) {
-        cats = new Cat[number];
-       for (int i = 0; i < cats.length; i++) {
-           cats[i] = new Cat(random.nextInt(1001)+500, (random.nextFloat()/2)+1.5f);
-       }
-    }
-
-    static void getRobots(int number) {
-        robots = new PieceOfIron[number];
-        for (int i = 0; i < robots.length; i++) {
-            robots[i]= new PieceOfIron();
-        }
-    }
-
-    private static void go(Action member, int i) {
+    private static void go(MembersAction member, int i) {
         StringBuilder text = new StringBuilder();
-        text.append(member.greeting(i));
+        text.append(member.greeting((1+i/3)));
         for (int j = 0; j < obstacles.length; j++) {
             if(obstacles[j].getClass().equals(Paries.class)){
                 if (member.getRiseHeight()>=obstacles[j].getValue()) {

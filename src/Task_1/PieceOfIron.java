@@ -1,6 +1,6 @@
 package Task_1;
 
-public class PieceOfIron implements Action{
+public class PieceOfIron implements MembersAction {
     private float riseHeight =3.0f;
 
     @Override

@@ -1,6 +1,6 @@
 package Task_1;
 
-public interface Action {
+public interface MembersAction {
 
     float riseHeight = 0;
 

@@ -1,6 +1,6 @@
 package Task_1;
 
-public class Human implements Action{
+public class Human implements MembersAction {
     private int endurance;
     private float riseHeight;
 
@@ -43,7 +43,7 @@ public class Human implements Action{
                 }
             endurance -= 5;
         }
-        return !canContinue() ? " и выдохся.\n" : String.format( "%s %.1f метров,", s, height);
+        return !canContinue() ? " и выдохся.\n" : String.format( "%s %.1f метра,", s, height);
     }
 
     @Override
