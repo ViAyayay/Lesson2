@@ -21,7 +21,6 @@ public class MyServer {
         startWork();
     }
 
-
     public void startWork() {
         try (ServerSocket server = new ServerSocket(port)){
             authService = new BaseAuthService();
